@@ -1,0 +1,23 @@
+{
+  "name": "songzhi-blog",
+  "version": "1.0.0",
+  "description": "blog",
+  "main": "index.js",
+  "dependencies": {
+    "vuepress": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "npx vuepress dev docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/songzhi/songzhi.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/songzhi/songzhi.github.io/issues"
+  },
+  "homepage": "https://github.com/songzhi/songzhi.github.io#readme"
+}
