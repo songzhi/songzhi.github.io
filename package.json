@@ -4,16 +4,20 @@
   "description": "blog",
   "main": "index.js",
   "dependencies": {
+    "bulma": "^0.8.0",
     "vuepress": "^1.2.0"
   },
   "devDependencies": {
     "@vuepress/plugin-active-header-links": "^1.2.0",
     "@vuepress/plugin-back-to-top": "^1.2.0",
     "@vuepress/plugin-medium-zoom": "^1.2.0",
-    "@vuepress/plugin-nprogress": "^1.2.0"
+    "@vuepress/plugin-nprogress": "^1.2.0",
+    "sass": "^1.23.7",
+    "typescript": "^3.7.3"
   },
   "scripts": {
-    "dev": "npx vuepress dev docs"
+    "dev": "npx vuepress dev docs",
+    "dev-dev": "parcel ./dev/index.html"
   },
   "repository": {
     "type": "git",
