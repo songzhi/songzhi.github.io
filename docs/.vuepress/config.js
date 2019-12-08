@@ -1,7 +1,6 @@
 module.exports = {
   title: "松直的博客",
   themeConfig: {
-    sidebar: "auto",
     nav: [
       { text: "首页", link: "/" },
       { text: "技术", link: "/tech/" },
@@ -18,6 +17,14 @@ module.exports = {
     "@vuepress/active-header-links",
     "@vuepress/back-to-top",
     "@vuepress/medium-zoom",
-    "@vuepress/nprogress"
+    "@vuepress/nprogress",
+    [
+      'vuepress-plugin-container',
+      {
+        type: 'details',
+        before: info => `<details class="custom-block details"><summary>${info}</summary>`,
+        after: '</details>',
+      },
+    ],
   ]
 };

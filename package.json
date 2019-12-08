@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "bulma": "^0.8.0",
-    "vuepress": "^1.2.0"
+    "vuepress": "^1.2.0",
+    "vuepress-plugin-container": "^2.1.2"
   },
   "devDependencies": {
     "@vuepress/plugin-active-header-links": "^1.2.0",
@@ -16,8 +17,7 @@
     "typescript": "^3.7.3"
   },
   "scripts": {
-    "dev": "npx vuepress dev docs",
-    "dev-dev": "parcel ./dev/index.html"
+    "dev": "npx vuepress dev docs"
   },
   "repository": {
     "type": "git",
