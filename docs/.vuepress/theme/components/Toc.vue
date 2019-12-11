@@ -159,7 +159,7 @@ export default {
     position: relative;
     padding: 0.1rem 0.6rem 0.1rem 0.8rem;
     line-height: 1.5rem;
-    border-left: 2px solid black;
+    border-left: 2px solid #00000044;
     overflow: hidden;
 
     a {
