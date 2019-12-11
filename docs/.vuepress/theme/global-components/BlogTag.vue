@@ -1,0 +1,60 @@
+<template>
+  <router-link
+    class="blog-tag"
+    :to="tag.path"
+  >
+    {{ tag.name }}
+    <span class="badge">{{ tag.pages.length }}</span>
+  </router-link>
+</template>
+
+<script>
+export default {
+  props: ['tag'],
+}
+</script>
+
+<style lang="stylus">
+.blog-tag {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  height: 45px;
+  word-break: break-word;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  border-radius: 0;
+  font-weight: 300;
+  text-align: left;
+  box-sizing: border-box;
+  transition: background-color 0.3s;
+  color: #000;
+  border: 1px solid #000;
+  text-decoration: none;
+  transition: all 0.5s;
+  text-transform: capitalize;
+
+  &:hover {
+    background-color: black;
+    color: white;
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .blog-tag {
+    font-size: 14px;
+    padding: 3px 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 0;
+  right: 4px;
+  font-size 0.9rem
+}
+</style>
