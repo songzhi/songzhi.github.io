@@ -4,7 +4,11 @@
   "description": "blog",
   "main": "index.js",
   "dependencies": {
+    "@liradb2000/markdown-it-katex": "^2.0.7",
     "bulma": "^0.8.0",
+    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-mark": "^3.0.0",
+    "markdown-it-task-lists": "^2.1.1",
     "vuepress": "^1.2.0",
     "vuepress-plugin-container": "^2.1.2"
   },
