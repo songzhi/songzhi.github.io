@@ -5,18 +5,23 @@
   "main": "index.js",
   "dependencies": {
     "@liradb2000/markdown-it-katex": "^2.0.7",
+    "@vuepress/plugin-search": "^1.2.0",
     "bulma": "^0.8.0",
     "markdown-it-footnote": "^3.0.2",
     "markdown-it-mark": "^3.0.0",
     "markdown-it-task-lists": "^2.1.1",
+    "remove-markdown": "^0.3.0",
+    "vue-feather-icons": "^5.0.0",
     "vuepress": "^1.2.0",
     "vuepress-plugin-container": "^2.1.2"
   },
   "devDependencies": {
     "@vuepress/plugin-active-header-links": "^1.2.0",
     "@vuepress/plugin-back-to-top": "^1.2.0",
+    "@vuepress/plugin-blog": "^1.5.2",
     "@vuepress/plugin-medium-zoom": "^1.2.0",
     "@vuepress/plugin-nprogress": "^1.2.0",
+    "@vuepress/theme-blog": "^1.3.3",
     "sass": "^1.23.7",
     "typescript": "^3.7.3"
   },

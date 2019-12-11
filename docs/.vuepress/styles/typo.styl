@@ -33,7 +33,7 @@ audio, canvas, video {
 
 /* 要注意表单元素并不继承父级 font 的问题 */
 body, button, input, select, textarea {
-  font: 300 1em / 1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  font: 300 1.15em / 1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
 }
 
 button::-moz-focus-inner, input::-moz-focus-inner {
@@ -130,7 +130,7 @@ a:hover {
 }
 
 
-.typo a:hover {
+{$ContentClass} a:hover {
   border-bottom-color: black;
   color: black;
   text-decoration: none;
@@ -147,7 +147,7 @@ ins, a {
  * 被放弃的是 4，之前一直搞错 http://www.w3.org/TR/html401/appendix/changes.html#idx-deprecated
  * 一篇关于 <u> 标签的很好文章：http://html5doctor.com/u-element/
  */
-u, .typo-u {
+u, {$ContentClass}-u {
   text-decoration: underline;
 }
 
@@ -181,7 +181,7 @@ hr {
 }
 
 /* 底部印刷体、版本等标记 */
-small, .typo-small, figcaption {
+small, {$ContentClass}-small, figcaption {
   font-size: 0.9em;
   color: #888;
 }
@@ -225,7 +225,7 @@ strong, b {
 }
 
 /* 保证块/段落之间的空白隔行 */
-.typo p, .typo pre, .typo ul, .typo ol, .typo dl, .typo form, .typo hr, .typo table, .typo-p, .typo-pre, .typo-ul, .typo-ol, .typo-dl, .typo-form, .typo-hr, .typo-table, blockquote {
+{$ContentClass} p, {$ContentClass} pre, {$ContentClass} ul, {$ContentClass} ol, {$ContentClass} dl, {$ContentClass} form, {$ContentClass} hr, {$ContentClass} table, {$ContentClass}-p, {$ContentClass}-pre, {$ContentClass}-ul, {$ContentClass}-ol, {$ContentClass}-dl, {$ContentClass}-form, {$ContentClass}-hr, {$ContentClass}-table, blockquote {
   margin-bottom: 1.2em;
 }
 
@@ -237,88 +237,88 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
-.typo h1, .typo h2, .typo h3, .typo h4, .typo h5, .typo h6, .typo-h1, .typo-h2, .typo-h3, .typo-h4, .typo-h5, .typo-h6 {
+{$ContentClass} h1, {$ContentClass} h2, {$ContentClass} h3, {$ContentClass} h4, {$ContentClass} h5, {$ContentClass} h6, {$ContentClass}-h1, {$ContentClass}-h2, {$ContentClass}-h3, {$ContentClass}-h4, {$ContentClass}-h5, {$ContentClass}-h6 {
   margin-top: 1.2em;
   margin-bottom: 0.6em;
   line-height: 1.35;
 }
 
-.typo h1, .typo-h1 {
+{$ContentClass} h1, {$ContentClass}-h1 {
   font-size: 2em;
 }
 
-.typo h2, .typo-h2 {
+{$ContentClass} h2, {$ContentClass}-h2 {
   font-size: 1.8em;
 }
 
-.typo h3, .typo-h3 {
+{$ContentClass} h3, {$ContentClass}-h3 {
   font-size: 1.6em;
 }
 
-.typo h4, .typo-h4 {
+{$ContentClass} h4, {$ContentClass}-h4 {
   font-size: 1.4em;
 }
 
-.typo h5, .typo h6, .typo-h5, .typo-h6 {
+{$ContentClass} h5, {$ContentClass} h6, {$ContentClass}-h5, {$ContentClass}-h6 {
   font-size: 1.2em;
 }
 
 /* 在文章中，应该还原 ul 和 ol 的样式 */
-.typo ul, .typo-ul {
+{$ContentClass} ul, {$ContentClass}-ul {
   margin-left: 1.3em;
   list-style: disc;
 }
 
-.typo ol, .typo-ol {
+{$ContentClass} ol, {$ContentClass}-ol {
   list-style: decimal;
   margin-left: 1.9em;
 }
 
-.typo li ul, .typo li ol, .typo-ul ul, .typo-ul ol, .typo-ol ul, .typo-ol ol {
+{$ContentClass} li ul, {$ContentClass} li ol, {$ContentClass}-ul ul, {$ContentClass}-ul ol, {$ContentClass}-ol ul, {$ContentClass}-ol ol {
   margin-bottom: 0.8em;
   margin-left: 2em;
 }
 
-.typo li ul, .typo-ul ul, .typo-ol ul {
+{$ContentClass} li ul, {$ContentClass}-ul ul, {$ContentClass}-ol ul {
   list-style: circle;
 }
 
 /* 同 ul/ol，在文章中应用 table 基本格式 */
-.typo table th, .typo table td, .typo-table th, .typo-table td, .typo table caption {
+{$ContentClass} table th, {$ContentClass} table td, {$ContentClass}-table th, {$ContentClass}-table td, {$ContentClass} table caption {
   border: 1px solid #ddd;
   padding: 0.5em 1em;
   color: #666;
 }
 
-.typo table th, .typo-table th {
+{$ContentClass} table th, {$ContentClass}-table th {
   background: #fbfbfb;
 }
 
-.typo table thead th, .typo-table thead th {
+{$ContentClass} table thead th, {$ContentClass}-table thead th {
   background: #f1f1f1;
 }
 
-.typo table caption {
+{$ContentClass} table caption {
   border-bottom: none;
 }
 
 /* 去除 webkit 中 input 和 textarea 的默认样式 */
-.typo-input, .typo-textarea {
+{$ContentClass}-input, {$ContentClass}-textarea {
   -webkit-appearance: none;
   border-radius: 0;
 }
 
-.typo-em, .typo em, legend, caption {
+{$ContentClass}-em, {$ContentClass} em, legend, caption {
   color: #000;
   font-weight: inherit;
 }
 
 /* 着重号，只能在少量（少于100个字符）且全是全角字符的情况下使用 */
-.typo-em {
+{$ContentClass}-em {
   position: relative;
 }
 
-.typo-em:after {
+{$ContentClass}-em:after {
   position: absolute;
   top: 0.65em;
   left: 0;
@@ -329,7 +329,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Responsive images */
-.typo img {
+{$ContentClass} img {
   max-width: 100%;
 }
 

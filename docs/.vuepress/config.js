@@ -2,10 +2,42 @@ module.exports = {
   title: "松直的博客",
   themeConfig: {
     nav: [
-      { text: "首页", link: "/" },
-      { text: "技术", link: "/tech/" },
-      { text: "想法", link: "/idea/" }
-    ]
+      {
+        text: '首页',
+        link: '/',
+      },
+      {
+        text: '技术',
+        link: '/tag/tech/',
+      },
+      {
+        text: '想法',
+        link: '/tag/idea/',
+      },
+      {
+        text: '所有标签',
+        link: '/tag/',
+      },
+    ],
+    footer: {
+      contact: [
+        {
+          type: "github",
+          link: "https://github.com/songzhi"
+        },
+        {
+          type: "web",
+          link: "https://www.zhihu.com/people/songzhili"
+        }
+      ],
+      copyright: [
+        {
+          text: "松直 © 2019",
+          link: ""
+        }
+      ]
+    },
+    paginationComponent: "SimplePagination"
   },
   locales: {
     "/": {
@@ -38,7 +70,34 @@ module.exports = {
           `<details class="custom-block details"><summary>${info}</summary>`,
         after: "</details>"
       }
-    ]
+    ],
+    [
+      '@vuepress/blog',
+      {
+        directories: [
+          {
+            // Unique ID of current classification
+            id: 'post',
+            // Target directory
+            dirname: '_posts',
+            // Path of the `entry page` (or `list page`)
+            path: '/',
+          },
+        ],
+        frontmatters: [
+          {
+            id: "tag",
+            keys: ['tag', 'tags'],
+            path: '/tag/',
+            // layout: 'Tag',  defaults to `FrontmatterKey.vue`
+            frontmatter: { title: 'Tag' },
+            pagination: {
+              lengthPerPage: 5
+            }
+          },
+        ]
+      },
+    ],
   ],
   markdown: {
     extendMarkdown: md => {
