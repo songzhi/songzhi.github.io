@@ -3,21 +3,21 @@ module.exports = {
   themeConfig: {
     nav: [
       {
-        text: '首页',
-        link: '/',
+        text: "首页",
+        link: "/"
       },
       {
-        text: '技术',
-        link: '/tag/tech/',
+        text: "技术",
+        link: "/tag/tech/"
       },
       {
-        text: '想法',
-        link: '/tag/idea/',
+        text: "想法",
+        link: "/tag/idea/"
       },
       {
-        text: '所有标签',
-        link: '/tag/',
-      },
+        text: "所有标签",
+        link: "/tag/"
+      }
     ],
     footer: {
       contact: [
@@ -72,32 +72,45 @@ module.exports = {
       }
     ],
     [
-      '@vuepress/blog',
+      "@vuepress/blog",
       {
         directories: [
           {
             // Unique ID of current classification
-            id: 'post',
+            id: "post",
             // Target directory
-            dirname: '_posts',
+            dirname: "_posts",
             // Path of the `entry page` (or `list page`)
-            path: '/',
-          },
+            path: "/"
+          }
         ],
         frontmatters: [
           {
             id: "tag",
-            keys: ['tag', 'tags'],
-            path: '/tag/',
+            keys: ["tag", "tags"],
+            path: "/tag/",
             // layout: 'Tag',  defaults to `FrontmatterKey.vue`
-            frontmatter: { title: 'Tag' },
+            frontmatter: { title: "Tag" },
             pagination: {
               lengthPerPage: 5
             }
-          },
-        ]
-      },
-    ],
+          }
+        ],
+        comment: {
+          // Which service you'd like to use
+          service: "vssue",
+          // The owner's name of repository to store the issues and comments.
+          owner: "songzhi",
+          // The name of repository to store the issues and comments.
+          repo: "songzhi.github.io",
+          // The clientId & clientSecret introduced in OAuth2 spec.
+          clientId: "f7a820943c1e739c08ed",
+          clientSecret: "55c43562d938f64856378c537778fa7f0f0a2e2f",
+          autoCreateIssue: true,
+          prefix: "[Post]"
+        }
+      }
+    ]
   ],
   markdown: {
     extendMarkdown: md => {
