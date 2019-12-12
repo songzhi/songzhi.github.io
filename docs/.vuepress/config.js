@@ -55,12 +55,24 @@ module.exports = {
           "sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq",
         crossorigin: "anonymous"
       }
+    ],
+    [
+      "script",
+      {
+        src: "https://hm.baidu.com/hm.js?65ab136d5be5d58c0be7a396bd05a3cd",
+        async: true
+      }
     ]
   ],
   plugins: [
     "@vuepress/active-header-links",
     "@vuepress/back-to-top",
-    "@vuepress/medium-zoom",
+    [
+      "@vuepress/medium-zoom",
+      {
+        selector: ".content__default :not(a) > img"
+      }
+    ],
     "@vuepress/nprogress",
     [
       "vuepress-plugin-container",
