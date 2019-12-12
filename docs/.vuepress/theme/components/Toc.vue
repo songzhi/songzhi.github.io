@@ -38,8 +38,10 @@ export default {
   },
 
   data() {
+    const isInContent = !(this.$frontmatter && this.$frontmatter.fullImage)
     return {
-      activeIndex: 0
+      activeIndex: 0,
+      isInContent,
     };
   },
 
@@ -48,7 +50,8 @@ export default {
       return (
         this.$frontmatter &&
         this.$frontmatter.toc !== false &&
-        !!(this.$page && this.$page.headers && this.$page.headers.length)
+        !!(this.$page && this.$page.headers && this.$page.headers.length) &&
+        this.isInContent
       );
     }
   },
@@ -81,6 +84,8 @@ export default {
 
       // update position
       const scrollTop = document.body.scrollTop + document.documentElement.scrollTop;
+      const contentTop = getAbsoluteTop(document.getElementsByClassName('content-wrapper')[0])
+      this.isInContent = scrollTop >= (contentTop - 50)
       const headings = this.$page.headers || [];
 
       // change active toc with scrolling
