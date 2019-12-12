@@ -3,6 +3,7 @@ tags:
   - python
   - tech
 date: "2017-10-04 20:44:40"
+titleImage: "http://mammothmedia.tv/admin/wp-content/uploads/2018/02/Trevor-Hawkins-Mammoth-Top-100-Small-54.jpg"
 ---
 
 # Python 元编程：控制你想控制的一切
