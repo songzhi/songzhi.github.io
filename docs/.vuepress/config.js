@@ -81,7 +81,7 @@ module.exports = {
             // Target directory
             dirname: '_posts',
             // Path of the `entry page` (or `list page`)
-            path: '/post/',
+            path: '/',
           },
         ],
         frontmatters: [
