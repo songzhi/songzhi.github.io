@@ -177,7 +177,7 @@ export default {
 
 .ui-post-tag {
   font-size: 0.95rem;
-  color: black;
+  color: #444;
   margin-left: 8px;
   font-weight: 400;
   text-transform: capitalize;

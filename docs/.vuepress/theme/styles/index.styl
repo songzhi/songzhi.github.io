@@ -255,7 +255,7 @@ a:hover {
   text-decoration: underline;
 }
 
-{$ContentClass} a:hover {
+{$contentClass} a:hover {
   border-bottom-color: black;
   color: black;
   text-decoration: none;
@@ -272,7 +272,7 @@ ins, a {
  * 被放弃的是 4，之前一直搞错 http://www.w3.org/TR/html401/appendix/changes.html#idx-deprecated
  * 一篇关于 <u> 标签的很好文章：http://html5doctor.com/u-element/
  */
-u, {$ContentClass}-u {
+u, {$contentClass}-u {
   text-decoration: underline;
 }
 
@@ -306,7 +306,7 @@ hr {
 }
 
 /* 底部印刷体、版本等标记 */
-small, {$ContentClass}-small, figcaption {
+small, {$contentClass}-small, figcaption {
   font-size: 0.9em;
   color: #888;
 }
@@ -350,7 +350,7 @@ strong, b {
 }
 
 /* 保证块/段落之间的空白隔行 */
-{$ContentClass} p, {$ContentClass} pre, {$ContentClass} ul, {$ContentClass} ol, {$ContentClass} dl, {$ContentClass} form, {$ContentClass} hr, {$ContentClass} table, {$ContentClass}-p, {$ContentClass}-pre, {$ContentClass}-ul, {$ContentClass}-ol, {$ContentClass}-dl, {$ContentClass}-form, {$ContentClass}-hr, {$ContentClass}-table, blockquote {
+{$contentClass} p, {$contentClass} pre, {$contentClass} ul, {$contentClass} ol, {$contentClass} dl, {$contentClass} form, {$contentClass} hr, {$contentClass} table, {$contentClass}-p, {$contentClass}-pre, {$contentClass}-ul, {$contentClass}-ol, {$contentClass}-dl, {$contentClass}-form, {$contentClass}-hr, {$contentClass}-table, blockquote {
   margin-bottom: 1.2em;
 }
 
@@ -362,88 +362,88 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
-{$ContentClass} h1, {$ContentClass} h2, {$ContentClass} h3, {$ContentClass} h4, {$ContentClass} h5, {$ContentClass} h6, {$ContentClass}-h1, {$ContentClass}-h2, {$ContentClass}-h3, {$ContentClass}-h4, {$ContentClass}-h5, {$ContentClass}-h6 {
+{$contentClass} h1, {$contentClass} h2, {$contentClass} h3, {$contentClass} h4, {$contentClass} h5, {$contentClass} h6, {$contentClass}-h1, {$contentClass}-h2, {$contentClass}-h3, {$contentClass}-h4, {$contentClass}-h5, {$contentClass}-h6 {
   margin-top: 1.2em;
   margin-bottom: 0.6em;
   line-height: 1.35;
 }
 
-{$ContentClass} h1, {$ContentClass}-h1 {
+{$contentClass} h1, {$contentClass}-h1 {
   font-size: 2em;
 }
 
-{$ContentClass} h2, {$ContentClass}-h2 {
+{$contentClass} h2, {$contentClass}-h2 {
   font-size: 1.8em;
 }
 
-{$ContentClass} h3, {$ContentClass}-h3 {
+{$contentClass} h3, {$contentClass}-h3 {
   font-size: 1.6em;
 }
 
-{$ContentClass} h4, {$ContentClass}-h4 {
+{$contentClass} h4, {$contentClass}-h4 {
   font-size: 1.4em;
 }
 
-{$ContentClass} h5, {$ContentClass} h6, {$ContentClass}-h5, {$ContentClass}-h6 {
+{$contentClass} h5, {$contentClass} h6, {$contentClass}-h5, {$contentClass}-h6 {
   font-size: 1.2em;
 }
 
 /* 在文章中，应该还原 ul 和 ol 的样式 */
-{$ContentClass} ul, {$ContentClass}-ul {
+{$contentClass} ul, {$contentClass}-ul {
   margin-left: 1.3em;
   list-style: disc;
 }
 
-{$ContentClass} ol, {$ContentClass}-ol {
+{$contentClass} ol, {$contentClass}-ol {
   list-style: decimal;
   margin-left: 1.9em;
 }
 
-{$ContentClass} li ul, {$ContentClass} li ol, {$ContentClass}-ul ul, {$ContentClass}-ul ol, {$ContentClass}-ol ul, {$ContentClass}-ol ol {
+{$contentClass} li ul, {$contentClass} li ol, {$contentClass}-ul ul, {$contentClass}-ul ol, {$contentClass}-ol ul, {$contentClass}-ol ol {
   margin-bottom: 0.8em;
   margin-left: 2em;
 }
 
-{$ContentClass} li ul, {$ContentClass}-ul ul, {$ContentClass}-ol ul {
+{$contentClass} li ul, {$contentClass}-ul ul, {$contentClass}-ol ul {
   list-style: circle;
 }
 
 /* 同 ul/ol，在文章中应用 table 基本格式 */
-{$ContentClass} table th, {$ContentClass} table td, {$ContentClass}-table th, {$ContentClass}-table td, {$ContentClass} table caption {
+{$contentClass} table th, {$contentClass} table td, {$contentClass}-table th, {$contentClass}-table td, {$contentClass} table caption {
   border: 1px solid #ddd;
   padding: 0.5em 1em;
   color: #666;
 }
 
-{$ContentClass} table th, {$ContentClass}-table th {
+{$contentClass} table th, {$contentClass}-table th {
   background: #fbfbfb;
 }
 
-{$ContentClass} table thead th, {$ContentClass}-table thead th {
+{$contentClass} table thead th, {$contentClass}-table thead th {
   background: #f1f1f1;
 }
 
-{$ContentClass} table caption {
+{$contentClass} table caption {
   border-bottom: none;
 }
 
 /* 去除 webkit 中 input 和 textarea 的默认样式 */
-{$ContentClass}-input, {$ContentClass}-textarea {
+{$contentClass}-input, {$contentClass}-textarea {
   -webkit-appearance: none;
   border-radius: 0;
 }
 
-{$ContentClass}-em, {$ContentClass} em, legend, caption {
+{$contentClass}-em, {$contentClass} em, legend, caption {
   color: #000;
   font-weight: inherit;
 }
 
 /* 着重号，只能在少量（少于100个字符）且全是全角字符的情况下使用 */
-{$ContentClass}-em {
+{$contentClass}-em {
   position: relative;
 }
 
-{$ContentClass}-em:after {
+{$contentClass}-em:after {
   position: absolute;
   top: 0.65em;
   left: 0;
@@ -454,7 +454,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Responsive images */
-{$ContentClass} img {
+{$contentClass} img {
   max-width: 100%;
 }
 
