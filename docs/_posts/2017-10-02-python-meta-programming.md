@@ -171,5 +171,3 @@ pass
 
 诸如元类等元编程对于大多数人来说有些晦涩难懂，大多数时候也无需用到它们。但是大多数框架背后的实现都使用到了这些技巧，这样才能让使用者写出来的代码简洁易懂。如果你想更深入的了解这些技巧，可以参看一些书籍例如*Fluent Python*、*Python Cookbook*（这篇文章有的内容就是参考了它们），或者看官方文档中的某些章节例如上文说的描述符*HowTo*，还有*Data Model*一节等等。或者直接看 Python 的源码，包括用 Python 写的以及 CPython 的源码。
 记住，只有在充分理解了它们之后再去使用，也不要是个地方就想着使用这些技巧。
-
-![ss](https://images.unsplash.com/photo-1576084474149-1c358c654d76?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80)
