@@ -6,6 +6,11 @@
       @toggle-sidebar="isMobileHeaderOpen = !isMobileHeaderOpen"
     />
     <div
+      class="TitleImage TitleImage--FullScreen"
+      :style="{'background-image':`url(${$frontmatter.titleImage})`}"
+      v-if="$frontmatter.titleImage"
+    ></div>
+    <div
       class="content-wrapper"
       @click="isMobileHeaderOpen = false"
     >
@@ -45,10 +50,11 @@ export default {
 
 <style lang="stylus">
 .content-wrapper {
-  padding: 96px 15px 80px 15px;
+  padding: 0 15px 80px 15px;
   min-height: calc(100vh - 80px - 60px - 96px);
   max-width: 960px;
   margin: 0 auto;
+  margin-top: 96px;
 }
 
 @media (max-width: $MQMobile) {
