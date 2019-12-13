@@ -5,7 +5,7 @@
     v-if="!isExternal(normalizedlink)"
     :exact="exact"
   >
-    <slot/>
+    <slot />
   </router-link>
   <a
     v-else
@@ -14,7 +14,7 @@
     :target="isMailto(normalizedlink) || isTel(normalizedlink) ? null : '_blank'"
     :rel="isMailto(normalizedlink) || isTel(normalizedlink) ? null : 'noopener noreferrer'"
   >
-    <slot/>
+    <slot />
   </a>
 </template>
 
@@ -29,11 +29,11 @@ export default {
   },
 
   computed: {
-    normalizedlink () {
+    normalizedlink() {
       return ensureExt(this.link)
     },
 
-    exact () {
+    exact() {
       if (this.$site.locales) {
         return Object.keys(this.$site.locales).some(rootLink => rootLink === this.normalizedlink)
       }
@@ -50,10 +50,12 @@ export default {
 </script>
 
 <style lang="stylus">
-.nav-link
-  color #000
+.nav-link {
+  color: #000;
+}
 
-.nav-link
-  &:hover, &.router-link-exact-active
-    text-decoration underline
+
+.nav-link:hover {
+  text-decoration: none;
+}
 </style>

@@ -6,7 +6,7 @@
         v-for="page in pages"
       >
         <div class="ui-post-title">
-          <NavLink :link="page.path">{{ page.title }}</NavLink>
+          <NavLink class="hvr-grow" :link="page.path">{{ page.title }}</NavLink>
         </div>
         <div class="ui-post-summary">
           {{ page.frontmatter.summary || page.summary }}
@@ -131,10 +131,6 @@ export default {
     color: #000;
     transition: all 0.2s;
     text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 }
 

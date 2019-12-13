@@ -1,7 +1,6 @@
 <template>
   <div id="vuperess-theme-blog__post-layout">
     <div class="vuepress-blog-theme-content">
-
       <Content />
       <hr />
       <Comment />

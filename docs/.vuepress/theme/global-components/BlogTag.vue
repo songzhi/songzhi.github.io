@@ -1,6 +1,6 @@
 <template>
   <router-link
-    class="blog-tag"
+    class="blog-tag hvr-fade"
     :to="tag.path"
   >
     {{ tag.name }}
@@ -25,19 +25,16 @@ export default {
   margin-bottom: 20px;
   padding: 0 20px;
   border-radius: 0;
-  font-weight: 300;
+  font-weight: 400;
   text-align: left;
   box-sizing: border-box;
-  transition: background-color 0.3s;
   color: #000;
-  border: 1px solid #000;
+  border: 2px solid #000;
   text-decoration: none;
   transition: all 0.5s;
   text-transform: capitalize;
 
   &:hover {
-    background-color: black;
-    color: white;
     text-decoration: none;
   }
 }
