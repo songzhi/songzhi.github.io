@@ -59,8 +59,8 @@ export default {
 
 @media (max-width: $MQMobile) {
   .content-wrapper {
-    padding: 100px 15px 20px 15px;
-    min-height: calc(100vh - 20px - 60px - 100px);
+    padding: 0px 15px 20px 15px;
+    min-height: calc(100vh - 20px - 60px - 0px);
   }
 }
 </style>

@@ -26,7 +26,11 @@ export default {
 
 .vuepress-blog-theme-content {
   @extend $wrapper;
-  font-size: 1.15rem;
+
+  @media (min-width: 960px) {
+    padding: 1.5rem;
+    font-size: 1.15rem;
+  }
 }
 </style>
 

@@ -3,10 +3,6 @@ module.exports = {
   themeConfig: {
     nav: [
       {
-        text: "首页",
-        link: "/"
-      },
-      {
         text: "技术",
         link: "/tag/tech/"
       },
