@@ -94,7 +94,7 @@ export default {
       if (page.frontmatter.tag)
         tags.push(page.frontmatter.tag)
       if (page.frontmatter.tags)
-        tags.concat(page.frontmatter.tags)
+        tags = tags.concat(page.frontmatter.tags)
       return tags
     }
   }
@@ -175,8 +175,8 @@ export default {
 }
 
 .ui-post-tag {
-  font-size: 0.95rem;
-  color: #444;
+  font-size: 0.8rem;
+  color: rgba(0,0,0,0.54);
   margin-left: 8px;
   font-weight: 400;
   text-transform: capitalize;
