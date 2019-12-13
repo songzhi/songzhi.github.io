@@ -6,7 +6,10 @@
         v-for="page in pages"
       >
         <div class="ui-post-title">
-          <NavLink class="hvr-grow" :link="page.path">{{ page.title }}</NavLink>
+          <NavLink
+            class="hvr-grow"
+            :link="page.path"
+          >{{ page.title }}</NavLink>
         </div>
         <div class="ui-post-summary">
           {{ page.frontmatter.summary || page.summary }}
@@ -121,7 +124,7 @@ export default {
 }
 
 .ui-post-title {
-  font-family: Serif;
+  font-family: '思源宋体', 'Times New Roman', '华文中宋', '宋体', serif;
   font-size: 28px;
   border-bottom: 0;
   text-transform: capitalize;

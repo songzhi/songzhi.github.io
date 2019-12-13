@@ -24,13 +24,7 @@ import Sticker from './Sticker.vue';
 let initTop;
 
 // get offset top
-function getAbsoluteTop(dom) {
-  return dom && dom.getBoundingClientRect
-    ? dom.getBoundingClientRect().top +
-    document.body.scrollTop +
-    document.documentElement.scrollTop
-    : 0;
-}
+import { getAbsoluteTop } from './util'
 
 export default {
   components: {

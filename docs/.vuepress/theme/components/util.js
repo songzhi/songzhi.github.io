@@ -55,3 +55,11 @@ export function findContainerInVm(ref, vm, def) {
   }
   return container || def;
 }
+
+export function getAbsoluteTop(dom) {
+  return dom && dom.getBoundingClientRect
+    ? dom.getBoundingClientRect().top +
+    document.body.scrollTop +
+    document.documentElement.scrollTop
+    : 0;
+}

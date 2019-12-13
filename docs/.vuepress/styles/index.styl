@@ -1,4 +1,4 @@
-@import("./hover.styl")
+@import ('./hover.styl');
 
 div[class*='language-'] {
   border-radius: 0;
@@ -101,6 +101,10 @@ div[class*='language-'] {
 
 .vssue .vssue-header, .vssue .vssue-new-comment {
   border-bottom: none;
+}
+
+.vssue .vssue-new-comment .vssue-new-comment-input:disabled {
+  background-color: initial;
 }
 
 .vssue-comment-footer {
