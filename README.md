@@ -1,4 +1,4 @@
-# songzhi.github.io
+# [blog.lsongzhi.cn]()
 Blog
 
 ## TODO
