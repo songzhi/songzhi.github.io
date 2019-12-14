@@ -97,10 +97,9 @@ add(1, 3)
 
 ```python
 def attr_upper(cls):
-    for attrname,value in cls.__dict__.items():
-        if isinstance(value,str):
-            if not value.startswith('__'):
-                setattr(cls,attrname,bytes.decode(str.encode(value).upper()))
+    for attrname, value in cls.__dict__.items():
+        if isinstance(value, str) and not value.startswith('__'):
+            setattr(cls, attrname, bytes.decode(str.encode(value).upper()))
     return cls
 
 @attr_upper
@@ -154,20 +153,20 @@ jack.age = '15'  # 会报错
 
 ```python
 class PluginBase:
-subclasses = []
+    subclasses = []
 
     def __init_subclass__(cls, **kwargs):
         super().__init_subclass__(**kwargs)
         cls.subclasses.append(cls)
 
 class Plugin1(PluginBase):
-pass
+    pass
 
 class Plugin2(PluginBase):
-pass
+    pass
 ```
 
 ## 小结
 
-诸如元类等元编程对于大多数人来说有些晦涩难懂，大多数时候也无需用到它们。但是大多数框架背后的实现都使用到了这些技巧，这样才能让使用者写出来的代码简洁易懂。如果你想更深入的了解这些技巧，可以参看一些书籍例如*Fluent Python*、*Python Cookbook*（这篇文章有的内容就是参考了它们），或者看官方文档中的某些章节例如上文说的描述符*HowTo*，还有*Data Model*一节等等。或者直接看 Python 的源码，包括用 Python 写的以及 CPython 的源码。
+诸如元类等元编程对于大多数人来说有些晦涩难懂，大多数时候也无需用到它们。但是大多数框架背后的实现都使用到了这些技巧，这样才能让使用者写出来的代码简洁易懂。如果你想更深入的了解这些技巧，可以参看一些书籍例如*Fluent Python*、_Python Cookbook_（这篇文章有的内容就是参考了它们），或者看官方文档中的某些章节例如上文说的描述符*HowTo*，还有*Data Model*一节等等。或者直接看 Python 的源码，包括用 Python 写的以及 CPython 的源码。
 记住，只有在充分理解了它们之后再去使用，也不要是个地方就想着使用这些技巧。

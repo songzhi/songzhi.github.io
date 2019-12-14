@@ -2,4 +2,3 @@
 Blog
 
 ## TODO
-* i18n

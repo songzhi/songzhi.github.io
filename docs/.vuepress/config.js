@@ -13,7 +13,11 @@ module.exports = {
       {
         text: "所有标签",
         link: "/tag/"
-      }
+      },
+      // {W
+      //   text: "Posts",
+      //   link: "/en/"
+      // }
     ],
     footer: {
       contact: [
@@ -29,7 +33,7 @@ module.exports = {
       copyright: [
         {
           text: "松直 © 2019",
-          link: ""
+          link: "/"
         }
       ]
     },
@@ -38,6 +42,11 @@ module.exports = {
   locales: {
     "/": {
       lang: "zh-CN"
+    },
+    "/en/": {
+      lang: "en-US", // 将会被设置为 <html> 的 lang 属性
+      title: "Songzhi's blog",
+      description: "Songzhi's blog"
     }
   },
   head: [
@@ -84,12 +93,20 @@ module.exports = {
       {
         directories: [
           {
-            // Unique ID of current classification
-            id: "post",
-            // Target directory
-            dirname: "_posts",
-            // Path of the `entry page` (or `list page`)
-            path: "/"
+            id: "zh",
+            dirname: "_zh",
+            path: "/",
+            itemLayout: "Post",
+            itemPermalink: "/zh/:year/:month/:day/:slug",
+            frontmatter: { title: "所有文章" }
+          },
+          {
+            id: "en",
+            dirname: "_en",
+            path: "/en/",
+            itemLayout: "Post",
+            itemPermalink: "/en/:year/:month/:day/:slug",
+            frontmatter: { title: "Posts" }
           }
         ],
         frontmatters: [
@@ -116,7 +133,8 @@ module.exports = {
           clientSecret: "55c43562d938f64856378c537778fa7f0f0a2e2f",
           autoCreateIssue: true,
           prefix: "[Post]"
-        }
+        },
+        paginationComponent: "SimplePagination"
       }
     ]
   ],
