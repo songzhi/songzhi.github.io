@@ -3,7 +3,7 @@
     <div class="vuepress-blog-theme-content">
       <Content />
       <hr />
-      <Comment />
+      <Comment v-if="!isDev" />
     </div>
     <Toc />
   </div>
@@ -18,6 +18,11 @@ export default {
     Toc,
     Comment,
   },
+  computed: {
+    isDev() {
+      return process.env.NODE_ENV === 'development'
+    }
+  }
 }
 </script>
 

@@ -85,9 +85,10 @@ def print_result(func):
 
 @print_result
 def add(x, y):
-return x + y #相当于：
+  return x + y 
+  
+#相当于：
 #add = print_result(add)
-
 add(1, 3)
 ```
 

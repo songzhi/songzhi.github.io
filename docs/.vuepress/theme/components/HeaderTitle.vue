@@ -1,19 +1,21 @@
 <template>
-  <div
-    class="header-title"
-    v-if="$page.title"
-  >
-    <a class="title-content" href="#">{{$page.title}}</a>
+  <div class="header-title" v-if="$page.title">
+    <a class="title-content" href="#">{{ $page.title }}</a>
     <span class="right-part">
-      <span>{{new Date($page.frontmatter.date).toLocaleDateString()}}</span>
+      <span>{{ date }}</span>
     </span>
   </div>
 </template>
 
 <script>
 export default {
-
-}
+  computed: {
+    date() {
+      if (this.$page.frontmatter.date)
+        return new Date(this.$page.frontmatter.date).toLocaleDateString();
+    }
+  }
+};
 </script>
 
 <style lang="stylus" scoped>
@@ -23,7 +25,10 @@ export default {
   position: absolute;
   width: 900px;
   font-family: '思源宋体', 'Times New Roman', '华文中宋', '宋体', serif;
-
+  text-align: center;
+  text-overflow ellipsis
+  overflow hidden
+  white-space nowrap
   .title-content {
     font-size: 1.2em;
     text-transform: capitalize;
@@ -34,7 +39,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 960px) {
+@media screen and (max-width: 1440px) {
   .header-title {
     display: none;
   }

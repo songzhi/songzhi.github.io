@@ -198,7 +198,7 @@ export default {
 }
 
 // for vuepress-toc
-@media (min-width: 1300px) {
+@media (min-width: 1440px) {
   .vuepress-toc {
     display: block;
   }
