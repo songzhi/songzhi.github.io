@@ -1,4 +1,4 @@
-# 【译】「结构化并发」简析，或：有害的go语句「结构化并发」简析，或：有害的go语句
+# 【译】「结构化并发」简析，或：有害的go语句
 
 [原博文（@vorpalsmith）](https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/)
 
@@ -47,7 +47,7 @@ async with trio.open_nursery() as nursery:
     nursery.start_soon(anotherfunc)
 ```
 
-当人们首次遇到这种“nursery”(nursery，苗圃)结构时，他们会有点困惑。为什么有一个缩进块？这个`nursery`对象是什么东西，还有为什么派生任务之前还得有它？他们又会发现，别的框架里得心应手的模式在这没法用了，就很恼火。它看起来古怪又独特，而且因为抽象层次过高也很难成为一个基本原语。这些反应都可以理解。但请容忍我。
+当人们首次遇到这种“nursery”(nursery，托儿所)结构时，他们会有点困惑。为什么有一个缩进块？这个`nursery`对象是什么东西，还有为什么派生任务之前还得有它？他们又会发现，别的框架里得心应手的模式在这没法用了，就很恼火。它看起来古怪又独特，而且因为抽象层次过高也很难成为一个基本原语。这些反应都可以理解。但请容忍我。
 
 **在这篇文章里，我想告诉你nursery模式一点也不古怪，而是一个像for循环或者函数调用一样基本的新控制流原语。更进一步，我们之前看到的其他方法——线程派生，回调注册——统统都不需要，而且能换成nursery式写法**
 
@@ -185,9 +185,9 @@ with open("my-file") as file_handle:
 
 `goto`的历史讲完了。现在，有多少能用在`go`语句上？额，基本上，全部！这个类比结果非常准确。
 
-**go语句破坏了抽象。**还记得我们说过如果我们的语言允许`goto`，那么任何函数都有可能是伪装的`goto`吗？在大多数并发框架中，`go`语句会导致完全相同的问题：每当调用函数时，它可能会也可能不会生成一些后台任务。函数似乎返回了，但它是不是仍然在后台运行？如果不通读所有源代码，就没办法知道。啥时候结束？很难说。如果有`go`语句，那么函数就不再是控制流的黑箱。在我的[第一篇并发API文章](https://vorpus.org/blog/some-thoughts-on-asynchronous-api-design-in-a-post-asyncawait-world/)中，我称之为“破坏了因果律”，并发现这是使用了asyncio和Twisted的程序中许多常见的实际问题的根源所在，比如backpressure问题，正常关闭时出现的问题等等。
+**go语句破坏了抽象**  还记得我们说过如果我们的语言允许`goto`，那么任何函数都有可能是伪装的`goto`吗？在大多数并发框架中，`go`语句会导致完全相同的问题：每当调用函数时，它可能会也可能不会生成一些后台任务。函数似乎返回了，但它是不是仍然在后台运行？如果不通读所有源代码，就没办法知道。什么时候结束？很难说。如果有`go`语句，那么函数就不再是控制流的黑箱。在我的[第一篇并发API文章](https://vorpus.org/blog/some-thoughts-on-asynchronous-api-design-in-a-post-asyncawait-world/)中，我称之为“破坏了因果律”，并发现这是使用了asyncio和Twisted的程序中许多常见的实际问题的根源所在，比如backpressure问题，正常关闭时出现的问题等等。
 
-**go语句破坏了自动资源清理。**让我们再回顾一下`with`语句的例子：
+**go语句破坏了自动资源清理。** 让我们再回顾一下`with`语句的例子：
 
 ```Python
 # Python
@@ -199,7 +199,7 @@ with open("my-file") as file_handle:
 
 如果我们想让这段代码正常工作，我们需要以某种方式跟踪任何后台任务，并手动安排文件在完成后关闭。这是可行的——除非我们使用的库在任务完成时不提供任何获得通知的方法，这是令人不安的常见现象（例如，因为它没有暴露任何可以join的handle）。但即使在最好情况下，非结构化的控制流也意味着语言无法帮助我们。我们又得手工执行资源清理，一朝回到解放前。
 
-**go语句破坏了错误处理。**正如我们上面讨论的，现代语言提供了诸如异常之类的强大工具，以帮助我们确保错误被检测到并传播到正确的位置。但这些工具依赖于“当前代码的调用者”的可靠概念。一旦派生任务或者注册回调，这种概念就被破坏了。因此，我所知道的每一个主流并发框架都简单地放弃了。如果在后台任务中发生错误，并且你没有手动处理它，那么运行时只是……把它扔在地上，交叉手指，说它不太重要。如果你幸运的话，它可能会在控制台上打印一些东西（我使用过的唯一一个认为“打印并继续运行”是一个很好的错误处理策略的其他软件是糟糕的旧Fortran库，但我们已经到这了）甚至Rust——这门被高中班级选为最热衷于线程正确性的语言——也为此感到羞愧。如果后台线程panic，Rust将丢弃错误并希望获得最佳结果。
+**go语句破坏了错误处理。** 正如我们上面讨论的，现代语言提供了诸如异常之类的强大工具，以帮助我们确保错误被检测到并传播到正确的位置。但这些工具依赖于“当前代码的调用者”的可靠概念。一旦派生任务或者注册回调，这种概念就被破坏了。因此，我所知道的每一个主流并发框架都简单地放弃了。如果在后台任务中发生错误，并且你没有手动处理它，那么运行时只是……把它扔在地上，交叉手指，说它不太重要。如果你幸运的话，它可能会在控制台上打印一些东西（我使用过的唯一一个认为“打印并继续运行”是一个很好的错误处理策略的其他软件是糟糕的旧Fortran库，但我们已经到这了）甚至Rust——这门被高中班级选为最热衷于线程正确性的语言——也为此感到羞愧。如果后台线程panic，Rust将丢弃错误并希望获得最佳结果。
 
 当然你可以在这些系统中正确地处理错误，方法是小心地确保join每个线程，或者构建自己的错误传播机制，比如[errbacks in Twisted](https://twistedmatrix.com/documents/current/core/howto/defer.html#visual-explanation)或者[Promise.catch in Javascript](https://hackernoon.com/promises-and-error-handling-4a11af37cb0e)。但是现在你在写一个自定义的，脆弱的，你的语言已经拥有的特性的重实现。你已经失去了一些有用的东西，比如“回溯”和“调试器”。只要有一次忘记了调用`Promise.catch`，然后就会突然间产生了巨大的错误，而你甚至都意识不到。即使你以某种方式解决了这些问题，你仍然得到两个冗余的做着同样事情的系统。
 
@@ -333,14 +333,22 @@ async with my_supervisor_library.open_supervisor() as nursery_alike:
 
 ## 结论
 
-流行的并发原语——`go`语句，线程派生函数、回调、`Future`，`Promise`……它们在理论和实践上都`goto`的变体。甚至不是现代的家养`goto`，而是旧约的
+流行的并发原语——`go`语句，线程派生函数、回调、`Future`，`Promise`……在理论和实践上它们都`goto`的变体。甚至不是现代的驯化`goto`，而是老式的火烧石的`goto`,可以跨越函数边界。即使我们不直接使用它们，这些原语也是危险的，因为它们破坏了我们对控制流的推理能力，破坏了从抽象的模块部分中构造出复杂系统的能力，而且它们干扰了有用的语言特性，比如自动资源清理和错误传播。因此，像`goto`一样，它们在现代高级语言中没有立足之地。
 
+Nursery提供了一个安全而方便的替代方案，它保留了语言的全部功能，并实现了强大的新功能（正如Trio的作用域级别任务取消和Ctrl-C处理所证明的那样），并且可以在可读性、效率和正确性方面有显著的提高。
 
+不幸的是，为了完全拥有这些好处，我们确实需要完全删除的旧的原语，这可能需要从头开始构建新的并发框架——就像消除`goto`需要设计新的语言一样。但是，尽管FLOW-MATIC在当时给人留下了深刻的印象，但我们大多数人对升级到更好的东西都乐见其成。我想我们也不会后悔改用nursery，Trio证明了这是一种实用的、通用的并发框架的可行设计。
+
+## 鸣谢
+
+非常感谢Graydon Hoare、Quentin Pradet和Hynek Schlawack对这篇文章的草稿提出的意见。当然，剩下的任何错误都是我的错。
+
+FLOW-MATIC样本代码来自于[本手册](http://archive.computerhistory.org/resources/text/Remington_Rand/Univac.Flowmatic.1957.102646140.pdf)（PDF），由[计算机历史博物馆](http://www.computerhistory.org/collections/catalog/102646140)保存。[Wolves in Action](https://www.flickr.com/photos/iam_photo/478178221)，作者：i:am. photography / Martin Pannier, 以 [CC-BY-SA 2.0](https://creativecommons.org/licenses/by-nc-sa/2.0/)协议发布, 有所裁剪. [French Bulldog Pet Dog](https://pixabay.com/en/french-bulldog-pet-dog-funny-2427629/) by Daniel Borker, 以[CC0 public domain dedication](https://creativecommons.org/publicdomain/zero/1.0/)协议发布 .
 
 ## 脚注
 
-[^1]:At least for a certain kind of person.
-[^2]:And WebAssembly even demonstrates that it's possible and at least somewhat desirable have a low-level assembly language without `goto`: [reference](https://www.w3.org/TR/wasm-core-1/#control-instructions①), [rationale](https://github.com/WebAssembly/design/blob/master/Rationale.md#control-flow)
-[^3]:For those who can't possibly pay attention to the text without first knowing whether I'm aware of their favorite paper, my current list of topics to include in my review are: the "parallel composition" operator in Cooperating/Communicating Sequential Processes and Occam, the fork/join model, Erlang supervisors, Martin Sústrik's article on [Structured concurrency](http://250bpm.com/blog:71) and work on [libdill](https://github.com/sustrik/libdill), and [crossbeam::scope](https://docs.rs/crossbeam/0.3.2/crossbeam/struct.Scope.html) / [rayon::scope](https://docs.rs/rayon/1.0.1/rayon/fn.scope.html) in Rust. [Edit: I've also been pointed to the highly relevant [golang.org/x/sync/errgroup](https://godoc.org/golang.org/x/sync/errgroup) and [github.com/oklog/run](https://godoc.org/github.com/oklog/run) in Golang.] If I'm missing anything important, [let me know](mailto:njs@pobox.com).
-[^4]:If you call `start_soon` *after* the nursery block has exited, then `start_soon` raises an error, and conversely, if it doesn't raise an error, then the nursery block is guaranteed to remain open until the task finishes. If you're implementing your own nursery system then you'll want to handle synchronization carefully here.Q
+[^1]:至少对某一类人来说是这样的.
+[^2]:而WebAssembly甚至证明了没有 "goto "的低级汇编语言是可能的，至少在某种程度上是可取的: [reference](https://www.w3.org/TR/wasm-core-1/#control-instructions①), [rationale](https://github.com/WebAssembly/design/blob/master/Rationale.md#control-flow)
+[^3]:对于那些在不知道我是否知道他们最喜欢的论文的情况下，不会关注这篇文章的人，我目前已经阅读过的主题包括: the "parallel composition" operator in Cooperating/Communicating Sequential Processes and Occam, the fork/join model, Erlang supervisors, Martin Sústrik's article on [Structured concurrency](http://250bpm.com/blog:71) and work on [libdill](https://github.com/sustrik/libdill), and [crossbeam::scope](https://docs.rs/crossbeam/0.3.2/crossbeam/struct.Scope.html) / [rayon::scope](https://docs.rs/rayon/1.0.1/rayon/fn.scope.html) in Rust. [Edit: I've also been pointed to the highly relevant [golang.org/x/sync/errgroup](https://godoc.org/golang.org/x/sync/errgroup) and [github.com/oklog/run](https://godoc.org/github.com/oklog/run) in Golang.] If I'm missing anything important, [let me know](mailto:njs@pobox.com).
+[^4]:如果你在nursery块退出后调用 `start_soon`，那么`start_soon`会产生一个错误，反之，如果它没有产生错误，那么nursery块将被保证保持开放，直到任务结束。如果你正在实现你自己的nursery系统，那么你会希望在这里小心地处理同步。
 
