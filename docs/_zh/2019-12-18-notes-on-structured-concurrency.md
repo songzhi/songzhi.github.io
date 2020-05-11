@@ -1,3 +1,10 @@
+---
+tags:
+  - python
+  - tech
+date: "2020-3-04 20:44:40"
+---
+
 # 【译】「结构化并发」简析，或：有害的go语句
 
 [原博文（@vorpalsmith）](https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/)

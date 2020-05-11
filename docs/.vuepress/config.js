@@ -32,7 +32,7 @@ module.exports = {
       ],
       copyright: [
         {
-          text: "松直 © 2019",
+          text: "松直 © 2020",
           link: "/"
         }
       ]
